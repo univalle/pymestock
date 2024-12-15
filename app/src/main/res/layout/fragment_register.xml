@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llTitle"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/color1"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TitleText"
+            android:fontFamily="serif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="PymeStock" />
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            style="@style/SubtitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Registro"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/llTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Contenido del ConstraintLayout -->
+
+        <EditText
+            android:id="@+id/inputUsername"
+            style="@style/CustomEditText"
+            android:autofillHints="username"
+            android:hint="Correo electrónico"
+            android:text="tristan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/inputEmail"
+            style="@style/CustomEditText"
+            android:autofillHints="email"
+            android:hint="Contraseña"
+            android:text="tristan@email.com"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputUsername" />
+
+        <EditText
+            android:id="@+id/inputPassword"
+            style="@style/CustomEditText"
+            android:autofillHints="password"
+            android:hint="Contraseña"
+            android:text="tristan"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
+
+
+        <EditText
+            android:id="@+id/inputPassword2"
+            style="@style/CustomEditText"
+            android:autofillHints="password"
+            android:hint="Contraseña"
+            android:text="tristan"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+
+
+        <Button
+            android:id="@+id/buttonRegister"
+            style="@style/ButtonPrimary"
+            android:layout_marginTop="28dp"
+            android:text="Registrarse"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputPassword2" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            style="@style/ButtonSecondary"
+            android:text="Volver al inicio de sesión"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
