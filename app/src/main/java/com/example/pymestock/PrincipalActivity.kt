@@ -5,6 +5,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.pymestock.databinding.ActivityPrincipalBinding
+import com.example.pymestock.views.AlertFragment
+import com.example.pymestock.views.ControlPanelFragment
+import com.example.pymestock.views.LoginFragment
+import com.example.pymestock.views.ProductsFragment
+import com.example.pymestock.views.RegisterFragment
+import com.example.pymestock.views.ScanFragment
 
 class PrincipalActivity : AppCompatActivity() {
 
@@ -28,7 +34,7 @@ class PrincipalActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_warehouses -> {
-                    replaceFragment(ControlPanelFragment())  // Reemplazar con ControlPanelFragment
+                    replaceFragment(ScanFragment())  // Reemplazar con ScanFragment
                     true
                 }
                 R.id.nav_products -> {
@@ -37,6 +43,10 @@ class PrincipalActivity : AppCompatActivity() {
                 }
                 R.id.nav_movements -> {
                     replaceFragment(ControlPanelFragment())  // Reemplazar con ControlPanelFragment
+                    true
+                }
+                R.id.nav_alerts -> {
+                    replaceFragment(AlertFragment())  // Reemplazar con AlertFragment
                     true
                 }
                 else -> false

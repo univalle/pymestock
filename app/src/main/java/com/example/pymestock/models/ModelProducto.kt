@@ -6,7 +6,7 @@ data class ModelProducto(
     val nombre: String,
     val identificador: String,
     val fechaVencimiento: String,
-    val cantidad: Int,
+    var cantidad: Int,
     val imagenUrl: String,
     val qrCode: String
 )

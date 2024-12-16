@@ -1,14 +1,11 @@
-package com.example.pymestock
+package com.example.pymestock.views
 
 import android.os.Bundle
-import android.service.controls.Control
-import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.example.pymestock.databinding.CustomToastBinding
+import androidx.fragment.app.Fragment
+import com.example.pymestock.R
 import com.example.pymestock.databinding.FragmentLoginBinding
 import com.example.pymestock.utils.CustomToastUtil
 
@@ -43,7 +40,7 @@ class LoginFragment : Fragment() {
             CustomToastUtil.showCustomToast(requireContext(), "Iniciar sesión")
 
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, ControlPanelFragment()) // Reemplaza con el id de tu contenedor de fragmentos
+                .replace(R.id.fragment_container, ProductsFragment()) // Reemplaza con el id de tu contenedor de fragmentos
                 .addToBackStack(null) // Opcional: para poder volver atrás
                 .commit()
         }

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="10dp"
+        android:orientation="horizontal">
+
+        <!-- Select Item Checkbox -->
+        <CheckBox
+            android:id="@+id/selectItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:buttonTint="@color/primary"
+            android:contentDescription="Select item"
+            android:visibility="gone" />
+
+
+        <ImageView
+            android:id="@+id/itemThumbnail"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Item image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_bell"
+            app:tint="@color/color2" />
+
+
+    <!-- Item Details -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/itemName"
+            style="@style/SubtitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="Alerta de stock bajo"
+            android:textColor="@color/color1"
+            android:textStyle="bold" />
+
+        <!-- Separate Layout for Quantities -->
+        <LinearLayout
+            android:id="@+id/itemQuantityLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/itemQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="El producto A se está agotando"
+                android:textColor="@color/color2"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="10dp"
+        android:orientation="horizontal">
+
+        <!-- Select Item Checkbox -->
+        <CheckBox
+            android:id="@+id/selectItem2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:buttonTint="@color/primary"
+            android:contentDescription="Select item"
+            android:visibility="gone" />
+
+
+        <ImageView
+            android:id="@+id/itemThumbnail2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Item image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_bell"
+            app:tint="@color/color2" />
+
+
+        <!-- Item Details -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/itemName2"
+                style="@style/SubtitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Alerta de stock bajo"
+                android:textColor="@color/color1"
+                android:textStyle="bold" />
+
+            <!-- Separate Layout for Quantities -->
+            <LinearLayout
+                android:id="@+id/itemQuantityLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/itemQuantity2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="El producto A se está agotando"
+                    android:textColor="@color/color2"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="10dp"
+        android:orientation="horizontal">
+
+        <!-- Select Item Checkbox -->
+        <CheckBox
+            android:id="@+id/selectItem3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:buttonTint="@color/primary"
+            android:contentDescription="Select item"
+            android:visibility="gone" />
+
+
+        <ImageView
+            android:id="@+id/itemThumbnail3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Item image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_bell"
+            app:tint="@color/color2" />
+
+
+        <!-- Item Details -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/itemName3"
+                style="@style/SubtitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Alerta de stock bajo"
+                android:textColor="@color/color1"
+                android:textStyle="bold" />
+
+            <!-- Separate Layout for Quantities -->
+            <LinearLayout
+                android:id="@+id/itemQuantityLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/itemQuantity3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="El producto A se está agotando"
+                    android:textColor="@color/color2"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

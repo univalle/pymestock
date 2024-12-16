@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.play.services.vision)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -76,7 +77,7 @@ dependencies {
 
     // retrofit
     implementation (libs.retrofit)
-    
+
     // recyclerview
     implementation (libs.androidx.recyclerview)
 
