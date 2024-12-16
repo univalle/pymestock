@@ -25,9 +25,7 @@ class ControlPanelFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Configurar la toolbar
-        val toolbar: Toolbar = binding.toolbar
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+
 
         // Deshabilitar el título por defecto del ActionBar
         val actionBar = (activity as AppCompatActivity).supportActionBar
@@ -36,10 +34,7 @@ class ControlPanelFragment : Fragment() {
         // Configurar el menú en el Toolbar
         setHasOptionsMenu(true)  // Habilita la opción de menú en este fragmento
 
-        // Configurar el botón de amburguesa
-        binding.hamburgerButton.setOnClickListener {
-            CustomToastUtil.showCustomToast(requireContext(), "Menú seleccionado")
-        }
+
 
 
         // Configurar el BottomNavigationView con los Toast

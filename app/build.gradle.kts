@@ -74,4 +74,10 @@ dependencies {
     // fragment
     implementation (libs.androidx.fragment.ktx)
 
+    // retrofit
+    implementation (libs.retrofit)
+    
+    // recyclerview
+    implementation (libs.androidx.recyclerview)
+
 }

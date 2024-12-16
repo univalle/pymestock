@@ -6,44 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ControlPanelFragment">
 
-    <!-- Panel superior con toolbar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:elevation="4dp">
 
-        <!-- boton hamburguesa-->
-        <ImageButton
-            android:id="@+id/hamburgerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_hamburguer"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Open Menu"
-            android:padding="16dp"
-            android:layout_gravity="start"
-            app:tint="@android:color/white" />
-
-        <!-- Nombre de la app en el centro -->
-        <TextView
-            android:id="@+id/tvAppName"
-            style="@style/TitleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PymeStock"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:fontFamily="serif"
-            android:textColor="@android:color/white"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
-
-
-    </androidx.appcompat.widget.Toolbar>
 
     <!-- Contenido principal -->
     <LinearLayout

@@ -1,13 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/nav_movements"
+        android:title="Movimientos"/>
+
+    <item
         android:id="@+id/nav_products"
         android:title="Productos"/>
     <item
         android:id="@+id/nav_stores"
         android:title="Almacenes"/>
-    <item
-        android:id="@+id/nav_movements"
-        android:title="Movimientos"/>
+
     <item
         android:id="@+id/nav_alerts"
         android:title="Alertas"/>
