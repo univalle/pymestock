@@ -9,11 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <!-- Custom Header (No Toolbar) -->
+        <RelativeLayout
+            android:id="@+id/header_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
+            android:padding="16dp"
             android:elevation="4dp">
 
             <ImageButton
@@ -23,39 +25,59 @@
                 android:src="@drawable/ic_hamburguer"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Open Menu"
-                android:padding="16dp"
-                android:layout_gravity="start"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 app:tint="@android:color/white" />
 
             <TextView
                 android:id="@+id/tvAppName"
-                style="@style/TitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="PymeStock"
-                android:layout_gravity="center"
+                android:layout_centerInParent="true"
                 android:textSize="20sp"
                 android:fontFamily="serif"
                 android:textColor="@android:color/white"
                 android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
-        </androidx.appcompat.widget.Toolbar>
 
+            <ImageButton
+                android:id="@+id/logoutButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_logout"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Logout"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:layout_alignParentEnd="true"
+                app:tint="@android:color/white" />
+
+        </RelativeLayout>
+
+        <!-- Main Content Area -->
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="56dp"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+            android:layout_below="@id/header_layout" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+    <!-- Agregar el NavigationView para el Drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".views.FooterFragment">
+        android:layout_gravity="start"
+        app:menu="@menu/drawer_menu" /> <!-- Define un menú de navegación aquí -->
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom">
+
+        <!-- Bottom Navigation -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
@@ -68,6 +90,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

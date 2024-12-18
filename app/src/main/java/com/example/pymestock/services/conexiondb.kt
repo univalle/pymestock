@@ -1,50 +1,56 @@
 import com.example.pymestock.models.ModelProducto
-import com.example.pymestock.models.ModelTienda
+import com.example.pymestock.models.Tienda
 import com.example.pymestock.models.ModelUbicacion
 import com.example.pymestock.models.ModelUsuario
+import com.example.pymestock.models.RegisterResponse
+import com.example.pymestock.models.Usuario
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface conexiondb {
+
     companion object {
-        const val url: String = "http://localhost:8080"
+        const val url: String = "http://localhost:8080"  // Ajusta la URL si estás usando otro servidor o IP
     }
 
-//    fun create(): conexiondb {
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl(url)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//        return retrofit.create(conexiondb::class.java)
-//    }
 
     // Métodos para ModelUsuario
-    @GET("/consultarUsuario")
+    @GET("/usuarios")
     suspend fun ConsultarUsuarios(): retrofit2.Response<List<ModelUsuario>>
 
-    @POST("/insertarUsuario")
-    suspend fun InsertarUsuario(@Body mUsuario: ModelUsuario): retrofit2.Response<ModelUsuario>
+    @POST("/usuario")
+    fun crearUsuario(@Body usuario: Usuario): Call<RegisterResponse>
 
     // Métodos para ModelProducto
-    @GET("/consultarProducto")
+    @GET("/productos")
     suspend fun ConsultarProductos(): retrofit2.Response<List<ModelProducto>>
 
-    @POST("/insertarProducto")
+    @POST("/producto")
     suspend fun InsertarProducto(@Body mProducto: ModelProducto): retrofit2.Response<ModelProducto>
 
     // Métodos para ModelTienda
-    @GET("/consultarTienda")
-    suspend fun ConsultarTiendas(): retrofit2.Response<List<ModelTienda>>
+    @GET("/tiendas")
+    suspend fun ConsultarTiendas(): retrofit2.Response<List<Tienda>>
 
-    @POST("/insertarTienda")
-    suspend fun InsertarTienda(@Body mTienda: ModelTienda): retrofit2.Response<ModelTienda>
+    @POST("/tienda")
+    suspend fun InsertarTienda(@Body mTienda: Tienda): retrofit2.Response<Tienda>
+
+    // Método para obtener todas las tiendas con sus productos y ubicaciones
+    @GET("/tiendasConProductos")
+    suspend fun ConsultarTiendasConProductos(): retrofit2.Response<List<Tienda>>
+
+    // Método para obtener solo las tiendas de un usuario con sus ubicaciones y productos
+    @GET("/tiendasDeUsuario/{idUsuario}")
+    suspend fun ConsultarTiendasDeUsuario(@Path("idUsuario") idUsuario: Int): retrofit2.Response<List<Tienda>>
 
     // Métodos para ModelUbicacion
-    @GET("/consultarUbicacion")
+    @GET("/ubicaciones")
     suspend fun ConsultarUbicaciones(): retrofit2.Response<List<ModelUbicacion>>
 
-    @POST("/insertarUbicacion")
+    @POST("/ubicacion")
     suspend fun InsertarUbicacion(@Body mUbicacion: ModelUbicacion): retrofit2.Response<ModelUbicacion>
 }

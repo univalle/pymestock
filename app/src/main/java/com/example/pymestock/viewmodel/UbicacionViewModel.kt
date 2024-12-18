@@ -1,70 +1,62 @@
 package com.example.pymestock.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.pymestock.models.ModelUbicacion
+import com.example.pymestock.utils.RetrofitInstance
+import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class UbicacionViewModel : ViewModel() {
-    private val _datalistUbicacion: MutableLiveData<MutableList<ModelUbicacion>> =
-        MutableLiveData(mutableListOf())
 
-    val datalistUbicacion: MutableLiveData<MutableList<ModelUbicacion>>
-        get() = _datalistUbicacion
+    private val _ubicaciones = MutableLiveData<List<ModelUbicacion>>()
+    val ubicaciones: LiveData<List<ModelUbicacion>> get() = _ubicaciones
 
-    /**
-     * Agrega una lista de ubicaciones a la lista existente.
-     */
-    fun addUbicacionList(mUbicacion: MutableList<ModelUbicacion>) {
-        val currentList = datalistUbicacion.value ?: mutableListOf()
-        currentList.addAll(mUbicacion)
-        datalistUbicacion.postValue(currentList)
-    }
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> get() = _error
 
-    /**
-     * Agrega una sola ubicación a la lista existente.
-     */
-    fun addUbicacion(mUbicacion: ModelUbicacion) {
-        val currentList = datalistUbicacion.value ?: mutableListOf()
-        currentList.add(mUbicacion)
-        datalistUbicacion.postValue(currentList)
-    }
+    private val apiService = RetrofitInstance.getRetrofitInstance().create(conexiondb::class.java)
 
-    /**
-     * Actualiza una ubicación en una posición específica de la lista.
-     */
-    fun updateUbicacion(position: Int, mUbicacion: ModelUbicacion) {
-        val currentList = datalistUbicacion.value ?: mutableListOf()
-        currentList[position] = mUbicacion
-        datalistUbicacion.postValue(currentList)
-    }
-
-    /**
-     * Elimina una ubicación en una posición específica de la lista.
-     */
-    fun removeUbicacion(position: Int) {
-        val currentList = datalistUbicacion.value ?: mutableListOf()
-        if (position >= 0 && position < currentList.size) {
-            currentList.removeAt(position)
-            datalistUbicacion.postValue(currentList)
+    // Obtener todas las ubicaciones
+    fun obtenerUbicaciones() {
+        viewModelScope.launch {
+            try {
+                val response: Response<List<ModelUbicacion>> = apiService.ConsultarUbicaciones()
+                if (response.isSuccessful) {
+                    _ubicaciones.value = response.body()
+                } else {
+                    _error.value = "Error: ${response.message()}"
+                }
+            } catch (e: Exception) {
+                _error.value = "Error: ${e.localizedMessage}"
+            }
         }
     }
 
-    /**
-     * Obtiene una ubicación por su ID.
-     */
-    fun getUbicacionById(id: Int): ModelUbicacion? {
-        return datalistUbicacion.value?.find { it.id == id }
-    }
+    // Insertar una ubicación
+    fun insertarUbicacion(ubicacion: ModelUbicacion) {
+        viewModelScope.launch {
+            try {
+                val response: Response<ModelUbicacion> = apiService.InsertarUbicacion(ubicacion)
+                if (response.isSuccessful) {
+                    // Si la respuesta es exitosa, obtenemos la ubicación insertada
+                    val ubicacionInsertada = response.body()
 
-    /**
-     * Actualiza el nombre de una ubicación específica.
-     */
-    fun updateNombreUbicacion(id: Int, nuevoNombre: String) {
-        val currentList = datalistUbicacion.value ?: mutableListOf()
-        val ubicacion = currentList.find { it.id == id }
-        ubicacion?.let {
-            it.nombre = nuevoNombre
-            datalistUbicacion.postValue(currentList)
+                    // Verifica si la ubicación insertada no es null antes de actualizar la lista
+                    if (ubicacionInsertada != null) {
+                        // Obtén la lista actual de ubicaciones o crea una lista vacía si no existe
+                        val currentList = _ubicaciones.value?.toMutableList() ?: mutableListOf()
+                        currentList.add(ubicacionInsertada)
+                        _ubicaciones.value = currentList
+                    }
+                } else {
+                    _error.value = "Error: ${response.message()}"
+                }
+            } catch (e: Exception) {
+                _error.value = "Error: ${e.localizedMessage}"
+            }
         }
     }
 }

@@ -30,8 +30,6 @@ class ControlPanelFragment : Fragment() {
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.setDisplayShowTitleEnabled(false)  // Eliminar título por defecto
 
-        // Configurar el menú en el Toolbar
-        setHasOptionsMenu(true)  // Habilita la opción de menú en este fragmento
 
 
 
@@ -60,28 +58,6 @@ class ControlPanelFragment : Fragment() {
         }
     }
 
-    // Inflar el menú del toolbar cuando se crea el menú de opciones
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.drawer_menu, menu)  // Inflar el menú drawer_menu.xml en el toolbar
-        super.onCreateOptionsMenu(menu, inflater)
-    }
 
-    // Manejar clics en los ítems del menú del toolbar
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_home -> {
-                CustomToastUtil.showCustomToast(requireContext(), "Home seleccionado")
-                return true
-            }
-            R.id.nav_profile -> {
-                CustomToastUtil.showCustomToast(requireContext(), "Perfil seleccionado")
-                return true
-            }
-            R.id.nav_settings -> {
-                CustomToastUtil.showCustomToast(requireContext(), "Configuraciones seleccionadas")
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
+
 }

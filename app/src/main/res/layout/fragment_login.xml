@@ -55,7 +55,7 @@
             style="@style/CustomEditText"
             android:autofillHints="username"
             android:hint="Correo electrónico"
-            android:text="tristan"
+            android:text="tristan@example.com"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -65,7 +65,7 @@
             style="@style/CustomEditText"
             android:autofillHints="password"
             android:hint="Contraseña"
-            android:text="tristan"
+            android:text="12345"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

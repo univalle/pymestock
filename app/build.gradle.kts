@@ -84,4 +84,10 @@ dependencies {
     // recyclerview
     implementation (libs.androidx.recyclerview)
 
+    // Gson converter
+    implementation (libs.converter.gson)
+
+    // Coroutine support
+    implementation (libs.kotlinx.coroutines.android)
+
 }

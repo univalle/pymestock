@@ -5,23 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.pymestock.R
 import com.example.pymestock.databinding.FragmentRegisterBinding
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.example.pymestock.viewmodel.RegisterViewModel
+import com.example.pymestock.utils.CustomToastUtil
 
 class RegisterFragment : Fragment() {
 
     lateinit var binding: FragmentRegisterBinding
 
+    // Usar el ViewModel del registro
+    private val viewModel: RegisterViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -29,21 +30,47 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Acción cuando el usuario hace clic en buttonLogin
+        // Acción para ir al LoginFragment
         binding.buttonLogin.setOnClickListener {
-            // Cambiar de vuelta al LoginFragment
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, LoginFragment()) // Reemplaza con el id de tu contenedor de fragmentos
-                .addToBackStack(null) // Opcional: para poder volver atrás
+                .replace(R.id.fragment_container, LoginFragment()) // Cambiar al LoginFragment
+                .addToBackStack(null)
                 .commit()
         }
 
+        // Acción para registrar usuario
         binding.buttonRegister.setOnClickListener {
-            // Cambiar de vuelta al LoginFragment
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, LoginFragment()) // Reemplaza con el id de tu contenedor de fragmentos
-                .addToBackStack(null) // Opcional: para poder volver atrás
-                .commit()
+            val nombre = binding.inputUsername.text.toString()
+            val correo = binding.inputEmail.text.toString()
+            val contraseña = binding.inputPassword.text.toString()
+            val confirmPassword = binding.inputPassword2.text.toString()
+
+            // Validar los campos
+            if (nombre.isEmpty() || correo.isEmpty() || contraseña.isEmpty() || confirmPassword.isEmpty()) {
+                CustomToastUtil.showCustomToast(requireContext(), "Por favor, complete todos los campos")
+                return@setOnClickListener
+            }
+
+            if (contraseña != confirmPassword) {
+                CustomToastUtil.showCustomToast(requireContext(), "Las contraseñas no coinciden")
+                return@setOnClickListener
+            }
+
+            // Llamar al ViewModel para registrar el usuario
+            viewModel.register(nombre, correo, contraseña, "usuario") // El rol por defecto es "usuario"
+
+            // Observar la respuesta del registro
+            viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+                if (response.success) {
+                    CustomToastUtil.showCustomToast(requireContext(), "¡Registro exitoso!")
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, LoginFragment()) // Redirigir al LoginFragment
+                        .addToBackStack(null)
+                        .commit()
+                } else {
+                    CustomToastUtil.showCustomToast(requireContext(), "${response.error}")
+                }
+            })
         }
     }
 }

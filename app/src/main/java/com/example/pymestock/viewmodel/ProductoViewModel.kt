@@ -1,77 +1,60 @@
 package com.example.pymestock.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.pymestock.models.ModelProducto
-
+import com.example.pymestock.utils.RetrofitInstance
+import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class ProductoViewModel : ViewModel() {
 
-    private val _datalistProducto: MutableLiveData<MutableList<ModelProducto>> =
-    MutableLiveData(mutableListOf())
+    private val _productos = MutableLiveData<List<ModelProducto>>()
+    val productos: LiveData<List<ModelProducto>> get() = _productos
 
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> get() = _error
 
- 
-     // Agrega un solo producto a la lista existente.
-  
-    fun addProducto(mProd: ModelProducto) {
-        val currentList = datalistProducto.value ?: mutableListOf()
-        currentList.add(mProd)
-        datalistProducto.postValue(currentList)
-    }
+    private val apiService = RetrofitInstance.getRetrofitInstance().create(conexiondb::class.java)
 
-  
-     // Actualiza un producto en una posición específica de la lista.
-     
-    fun updateProducto(position: Int, mProd: ModelProducto) {
-        val currentList = datalistProducto.value ?: mutableListOf()
-        currentList[position] = mProd
-        datalistProducto.postValue(currentList)
-    }
-
- 
-     // Elimina un producto en una posición específica de la lista.
-
-    fun removeProducto(position: Int) {
-        val currentList = datalistProducto.value ?: mutableListOf()
-        if (position >= 0 && position < currentList.size) {
-            currentList.removeAt(position)
-            datalistProducto.postValue(currentList)
+    // Obtener todos los productos
+    fun obtenerProductos() {
+        viewModelScope.launch {
+            try {
+                val response: Response<List<ModelProducto>> = apiService.ConsultarProductos()
+                if (response.isSuccessful) {
+                    _productos.value = response.body()
+                } else {
+                    _error.value = "Error: ${response.message()}"
+                }
+            } catch (e: Exception) {
+                _error.value = "Error: ${e.localizedMessage}"
+            }
         }
     }
 
-  
-     // Obtiene un producto por su ID.
-   
-    fun getProductoById(id: Int): ModelProducto? {
-        return datalistProducto.value?.find { it.id == id }
-    }
+    fun insertarProducto(producto: ModelProducto) {
+        viewModelScope.launch {
+            try {
+                val response: Response<ModelProducto> = apiService.InsertarProducto(producto)
+                if (response.isSuccessful) {
+                    // Si la respuesta es exitosa, obtenemos el producto insertado
+                    val productoInsertado = response.body()
 
-
-    // Actualiza la cantidad de un producto específico.
-  
-    fun updateCantidadProducto(id: Int, nuevaCantidad: Int) {
-        val currentList = datalistProducto.value ?: mutableListOf()
-        val producto = currentList.find { it.id == id }
-        producto?.let {
-            it.cantidad = nuevaCantidad
-            datalistProducto.postValue(currentList)
+                    // Verifica si el producto insertado no es null antes de actualizar la lista
+                    if (productoInsertado != null) {
+                        val currentList = _productos.value?.toMutableList() ?: mutableListOf()
+                        currentList.add(productoInsertado)
+                        _productos.value = currentList
+                    }
+                } else {
+                    _error.value = "Error: ${response.message()}"
+                }
+            } catch (e: Exception) {
+                _error.value = "Error: ${e.localizedMessage}"
+            }
         }
     }
-
-
-    val datalistProducto: MutableLiveData<MutableList<ModelProducto>>
-        get() = _datalistProducto
-
-    fun addProductoList(mProd: MutableList<ModelProducto>) {
-        val currentList = datalistProducto.value ?: mutableListOf()
-        currentList.addAll(mProd)
-        datalistProducto.postValue(currentList)
-    }
-
-//    suspend fun fetchProductosFromApi(): Response<List<ModelProducto>> {
-//        return withContext(Dispatchers.IO) {
-//            conexiondb.create().ConsultarProductos()
-//        }
-//    }
 }
