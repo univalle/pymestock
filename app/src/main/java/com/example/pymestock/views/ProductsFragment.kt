@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pymestock.R
 import com.example.pymestock.adapter.TiendaAdapter
+import com.example.pymestock.models.CurrentUser
 import com.example.pymestock.viewmodel.TiendaViewModel
 
 class ProductsFragment : Fragment(R.layout.fragment_products) {
@@ -27,8 +28,7 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
 
         tiendaViewModel = ViewModelProvider(this).get(TiendaViewModel::class.java)
 
-        // Suponiendo que el ID de usuario se obtiene de alguna parte, como en este caso, se puede pasar de esta manera
-        val idUsuario = 1 // Cambiar según el caso
+        val idUsuario = CurrentUser.getId()
 
         tiendaViewModel.obtenerTiendasConProductos(idUsuario)
 

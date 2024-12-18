@@ -25,7 +25,7 @@ class TiendaAdapter(private val tiendaList: List<Tienda>) :
         holder.ubicacion.text = "Ubicación: ${tienda.ubicacion}"
 
         // Mostrar el total de productos
-        val totalProductos = tienda.productos.size // Contamos los productos de la tienda
+        val totalProductos = tienda.productos.size
         holder.productos.text = "Total de productos: $totalProductos"
     }
 

@@ -13,6 +13,8 @@ import com.example.pymestock.databinding.FragmentLoginBinding
 import com.example.pymestock.viewmodel.LoginViewModel
 import com.example.pymestock.utils.CustomToastUtil
 import com.example.pymestock.PrincipalActivity
+import com.example.pymestock.models.CurrentUser
+import kotlin.math.log
 
 class LoginFragment : Fragment() {
 
@@ -51,6 +53,13 @@ class LoginFragment : Fragment() {
                 if (response.isSuccessful) {
                     // Usuario existe, proceder al siguiente fragmento
                     CustomToastUtil.showCustomToast(requireContext(), "¡Bienvenido!")
+
+                    Log.d("respuesta", response.body().toString())
+
+
+                    CurrentUser.setId(response.body()?.user?.id_usuario ?: -1) // Acceder a id_usuario dentro de user
+
+
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, ProductsFragment())  // Redirige al fragmento de productos
                         .addToBackStack(null)

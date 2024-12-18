@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import com.example.pymestock.databinding.ActivityPrincipalBinding
+import com.example.pymestock.models.CurrentUser
 import com.example.pymestock.views.LoginFragment
 import com.example.pymestock.utils.CustomToastUtil
 import com.example.pymestock.views.AlertFragment
@@ -43,6 +44,8 @@ class PrincipalActivity : AppCompatActivity() {
 
         binding.logoutButton.setOnClickListener {
             CustomToastUtil.showCustomToast(this, "Cerrar sesión")
+
+            CurrentUser.setId(-1)  // Restablecer el ID del usuario actual
 
             // Reemplazar con LoginFragment
             replaceFragment(LoginFragment())

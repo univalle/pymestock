@@ -1,9 +1,7 @@
 package com.example.pymestock.models
 
 data class ModelUsuario(
-    val idUsuario: Int,
-    val nombre: String,
     val correo: String,
-    val contraseña: String,
-    val rol: String
+    val id_usuario: Int,
+    val nombre: String
 )

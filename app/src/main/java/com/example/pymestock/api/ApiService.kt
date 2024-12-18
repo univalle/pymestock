@@ -3,6 +3,7 @@ package com.example.pymestock.api
 import com.example.pymestock.models.ModelUsuario
 import com.example.pymestock.models.RegisterResponse
 import com.example.pymestock.models.Tienda
+import com.example.pymestock.models.UserResponse
 import com.example.pymestock.models.Usuario
 import retrofit2.Call
 import retrofit2.Response
@@ -15,7 +16,7 @@ data class LoginRequest(val username: String, val password: String)
 
 interface ApiService {
     @POST("/login")
-    suspend fun login(@Body loginRequest: LoginRequest): Response<ModelUsuario>
+    suspend fun login(@Body loginRequest: LoginRequest): Response<UserResponse>
 
 
     @POST("/usuario")
