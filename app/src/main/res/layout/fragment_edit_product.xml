@@ -47,30 +47,11 @@
         <EditText
             android:id="@+id/name"
             style="@style/CustomEditText"
-            android:autofillHints="username"
-            android:hint="Nombre de producto"
+            android:autofillHints="Store name"
+            android:hint="Nombre de tienda"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonEditImg" />
-
-        <EditText
-            android:id="@+id/price"
-            style="@style/CustomEditText"
-            android:autofillHints="password"
-            android:hint="Precio"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
-
-        <EditText
-            android:id="@+id/category"
-            style="@style/CustomEditText"
-            android:autofillHints="password"
-            android:hint="Categoría"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price" />
-
 
         <Button
             android:id="@+id/save"
@@ -80,7 +61,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category" />
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

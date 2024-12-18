@@ -62,6 +62,33 @@
         </LinearLayout>
 
         <!-- Arrow -->
+
+        <ImageView
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_edit" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_trash" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+
         <ImageView
             android:id="@+id/arrow"
             android:layout_width="wrap_content"
@@ -81,5 +108,7 @@
         android:text="Total productos:"
         android:textColor="@color/color2"
         android:textSize="14sp" />
+
+
 
 </LinearLayout>

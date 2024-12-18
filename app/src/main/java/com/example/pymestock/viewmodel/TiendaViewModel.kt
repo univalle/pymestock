@@ -6,11 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pymestock.api.RetrofitInstance
-import com.example.pymestock.api.RetrofitInstance.apiService
-import com.example.pymestock.models.ModelProducto
+import com.example.pymestock.models.CurrentUser
 import com.example.pymestock.models.Tienda
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class TiendaViewModel : ViewModel() {
 
@@ -33,4 +31,20 @@ class TiendaViewModel : ViewModel() {
         }
     }
 
+    // Método para desactivar una tienda
+    fun desactivarTienda(idTienda: String) {
+        viewModelScope.launch {
+            try {
+                val response = RetrofitInstance.apiService.desactivarTienda(idTienda)
+                if (response.isSuccessful) {
+                    Log.d("TiendaViewModel", "Tienda desactivada correctamente")
+                    obtenerTiendasConProductos(CurrentUser.getId())
+                } else {
+                    Log.d("TiendaViewModel", "Error al desactivar la tienda. Código: ${response.code()}")
+                }
+            } catch (e: Exception) {
+                Log.d("TiendaViewModel", "Excepción al desactivar la tienda: ${e.localizedMessage}")
+            }
+        }
+    }
 }

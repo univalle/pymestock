@@ -23,18 +23,19 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
         recyclerView = view.findViewById(R.id.rvProducts)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        tiendaAdapter = TiendaAdapter(emptyList())
-        recyclerView.adapter = tiendaAdapter
 
+        // Inicializa el ViewModel
         tiendaViewModel = ViewModelProvider(this).get(TiendaViewModel::class.java)
 
+        // Obtener el ID del usuario actual
         val idUsuario = CurrentUser.getId()
 
+        // Obtener la lista de tiendas activas con productos
         tiendaViewModel.obtenerTiendasConProductos(idUsuario)
 
         // Observar cambios en la lista de tiendas
         tiendaViewModel.tiendaList.observe(viewLifecycleOwner, { tiendas ->
-            tiendaAdapter = TiendaAdapter(tiendas)
+            tiendaAdapter = TiendaAdapter(tiendas, tiendaViewModel) // Pasar el ViewModel al adaptador
             recyclerView.adapter = tiendaAdapter
         })
     }

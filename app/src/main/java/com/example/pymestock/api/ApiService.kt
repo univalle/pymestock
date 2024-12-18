@@ -9,6 +9,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -23,4 +24,13 @@ interface ApiService {
 
     @GET("usuario_tienda_productos/{id_usuario}")
     suspend fun getTiendasConProductos(@Path("id_usuario") idUsuario: Int): Response<List<Tienda>>
+
+    @PATCH("desactivar_tienda/{id_tienda}")
+    suspend fun desactivarTienda(@Path("id_tienda") idTienda: String): Response<Void>
+
+    @PATCH("actualizar_tienda/{nombre_tienda}")
+    fun actualizarTienda(
+        @Path("nombre_tienda") nombreTienda: String,
+        @Body nuevoNombre: Map<String, String>
+    ): Call<Void> // Aquí usamos Call en lugar de suspend
 }

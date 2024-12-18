@@ -62,7 +62,7 @@
             android:id="@+id/inputEmail"
             style="@style/CustomEditText"
             android:autofillHints="email"
-            android:hint="Contraseña"
+            android:hint="Correo electrónico"
             android:text="tristan@email.com"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -34,12 +34,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/itemZone"
+                android:id="@+id/itemName"
                 style="@style/SubtitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:text="Tienda"
+                android:text="Nombre producto"
                 android:textColor="@color/color1"
                 android:textStyle="bold" />
 
@@ -51,18 +51,13 @@
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/itemQuantity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ubicación: %s"
-                    android:textColor="@color/color2"
-                    android:textSize="14sp" />
 
             </LinearLayout>
 
 
         </LinearLayout>
+
+
 
         <!-- Arrow -->
         <ImageView
@@ -70,8 +65,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_arrow"
+            android:src="@drawable/ic_edit"
             app:tint="@color/color2" />
+
+<!--        space-->
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_trash" />
 
 
 

@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".views.ProductsFragment">
 
-
-
-    <!-- Contenido principal -->
     <LinearLayout
         android:id="@+id/llContent"
         android:layout_width="match_parent"
@@ -19,7 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clContent"
             android:layout_width="match_parent"
@@ -28,13 +24,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <!-- Contenido del ConstraintLayout -->
-
             <EditText
                 android:id="@+id/inputUsername"
                 style="@style/CustomEditText"
                 android:autofillHints="buscar"
-                android:hint="Buscar almacenes.."
+                android:hint="Buscar tiendas.."
                 android:text=""
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,28 +36,31 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-<!--        recycle view-->
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProducts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:clipToPadding="false"
-            android:clipChildren="false"
             android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/clContent"
+            tools:listitem="@layout/product" />
+
+        <TextView
+            android:id="@+id/tvEmptyMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="50dp"
+            android:text="Lista vacía"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/product"
-            />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </LinearLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
