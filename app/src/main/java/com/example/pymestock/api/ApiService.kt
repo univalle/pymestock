@@ -18,7 +18,6 @@ interface ApiService {
     @POST("/login")
     suspend fun login(@Body loginRequest: LoginRequest): Response<UserResponse>
 
-
     @POST("/usuario")
     fun crearUsuario(@Body usuario: Usuario): Call<RegisterResponse>
 

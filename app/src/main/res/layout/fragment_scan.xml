@@ -6,13 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".views.ScanFragment">
 
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
     <!-- scanner -->
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_scan"
-        app:tint="@color/primary" />
+        app:tint="@color/color3" />
+
+
 
     <!-- scanner -->
     <TextView
@@ -20,9 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingTop="196dp"
-        android:text="Scanner"
+        android:text="Escanea el código QR"
         android:textSize="24sp"
-        android:textColor="@color/primary"
+        android:textColor="@color/white"
         android:layout_marginTop="16dp" />
 
 

@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pymestock.api.RetrofitInstance
+import com.example.pymestock.api.RetrofitInstance.apiService
+import com.example.pymestock.models.ModelProducto
 import com.example.pymestock.models.Tienda
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -30,4 +32,5 @@ class TiendaViewModel : ViewModel() {
             }
         }
     }
+
 }

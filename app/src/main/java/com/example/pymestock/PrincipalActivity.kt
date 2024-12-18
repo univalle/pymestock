@@ -112,7 +112,7 @@ class PrincipalActivity : AppCompatActivity() {
             binding.fragmentContainer.updatePadding(top = 0)
         } else {
             binding.headerLayout.visibility = View.VISIBLE
-            val padding = 200
+            val padding = 160
             binding.fragmentContainer.updatePadding(top = padding)
             binding.bottomNavigationView.visibility = View.VISIBLE
         }

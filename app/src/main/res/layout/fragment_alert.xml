@@ -13,8 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="10dp"
+        android:background="@drawable/border_card"
+        android:paddingHorizontal="18dp"
+        android:paddingVertical="24dp"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
         <!-- Select Item Checkbox -->
@@ -54,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:text="Alerta de stock bajo"
+            android:text="Alerta de stock bajo en tienda A"
             android:textColor="@color/color1"
             android:textStyle="bold" />
 
@@ -85,8 +87,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="10dp"
+        android:background="@drawable/border_card"
+        android:paddingHorizontal="18dp"
+        android:paddingVertical="24dp"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
         <!-- Select Item Checkbox -->
@@ -126,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:text="Alerta de stock bajo"
+                android:text="Alerta de stock bajo en tienda B"
                 android:textColor="@color/color1"
                 android:textStyle="bold" />
 
@@ -142,7 +146,7 @@
                     android:id="@+id/itemQuantity2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="El producto A se está agotando"
+                    android:text="Los productos B y C se están agotando"
                     android:textColor="@color/color2"
                     android:textSize="14sp" />
 
@@ -157,8 +161,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="10dp"
+        android:background="@drawable/border_card"
+        android:paddingHorizontal="18dp"
+        android:paddingVertical="24dp"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
         <!-- Select Item Checkbox -->
@@ -198,7 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:text="Alerta de stock bajo"
+                android:text="Alerta de stock bajo en tienda C"
                 android:textColor="@color/color1"
                 android:textStyle="bold" />
 
@@ -214,7 +220,7 @@
                     android:id="@+id/itemQuantity3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="El producto A se está agotando"
+                    android:text="El producto D se está agotando"
                     android:textColor="@color/color2"
                     android:textSize="14sp" />
 

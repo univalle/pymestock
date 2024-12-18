@@ -14,9 +14,8 @@ import retrofit2.http.Path
 interface conexiondb {
 
     companion object {
-        const val url: String = "http://localhost:8080"  // Ajusta la URL si estás usando otro servidor o IP
+        const val url: String = "http://localhost:8080"
     }
-
 
     // Métodos para ModelUsuario
     @GET("/usuarios")

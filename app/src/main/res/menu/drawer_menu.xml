@@ -1,14 +1,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/nav_home"
-        android:title="Home" />
+        android:title="Crear nueva ubicación" />
 
     <item
         android:id="@+id/nav_profile"
-        android:title="Profile" />
+        android:title="Crear nueva tienda" />
 
     <item
         android:id="@+id/nav_settings"
-        android:title="Settings" />
+        android:title="Agregar productos" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Exportar informe" />
 </menu>

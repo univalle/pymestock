@@ -4,7 +4,6 @@ object CurrentUser {
 
     private var number: Int = -1
 
-    // Getter y Setter para el número
     fun getId(): Int {
         return number
     }
