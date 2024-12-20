@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: 3myapp
+      MYSQL_USER: backend
+      MYSQL_PASSWORD: 12345
+    ports:
+      - "3306:3306"
+    networks:
+      - backend_network
+
+  flask:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      MYSQL_HOST: mysql
+    depends_on:
+      - mysql
+    networks:
+      - backend_network
+    command: ./wait-for-it.sh mysql:3306 -- python app.py
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
+    driver: bridge
